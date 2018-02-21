@@ -15,6 +15,18 @@ const makeRequest = function(url, callback) {
 const requestComplete = function(){
   if(this.status !== 200) return;
   const jsonString = this.responseText;
+  const beers = JSON.parse(jsonString);
+  populateList(beers);
+}
+
+const populateList = function(beers){
+  const ul = document.getElementById("beer-list");
+
+  beers.forEach(function(beer){
+   const li = document.createElement("li");
+   li.innerText = beer.name;
+   ul.appendChild(li);
+  })
 }
 
 document.addEventListener('DOMContentLoaded', app);
