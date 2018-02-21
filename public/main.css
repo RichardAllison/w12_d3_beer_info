@@ -11,3 +11,7 @@ td {
   border: 1px solid #bdd5fc;
   padding: 10px;
 }
+
+#container {
+  display: flex;
+}

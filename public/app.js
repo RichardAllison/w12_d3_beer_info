@@ -19,36 +19,44 @@ const requestComplete = function () {
   populateList(beers);
 };
 
-const createRow = function (beer) {
-  const table = document.getElementById("beer-list");
-  const row = document.createElement('tr')
-  table.appendChild(row);
-  const imgtd = createImage(beer);
-  const nametd = createBeerName(beer);
-  row.appendChild(imgtd);
-  row.appendChild(nametd);
-  return row;
-}
 
 const createImage = function (beer) {
-  const td = document.createElement('td');
+  const imageDiv = document.getElementById('beer-image');
   const img = document.createElement('img');
   img.src = beer.image_url;
   // img.width = "50px";
-  td.appendChild(img);
-  return td;
+  imageDiv.appendChild(img);
+}
+
+const displayBeerInfo = function (beers) {
+  const index = document.getElementById('beer-list').value;
+  const beer = beers[index];
+
+  createImage(beer);
+  const infoDiv = document.getElementById('beer-info');
+  const name = createBeerName(beer);
+  infoDiv.appendChild(name);
 }
 
 const createBeerName = function (beer) {
-  const td = document.createElement('td');
-  td.innerText = beer.name;
-  return td;
+  const h2 = document.createElement('h2');
+  h2.innerText = beer.name;
+  return h2;
 }
 
 const populateList = function (beers) {
-  beers.forEach(function (beer) {
-    createRow(beer);
+  const select = document.getElementById("beer-list");
+  beers.forEach(function (beer, index) {
+    const option = document.createElement("option");
+    option.innerText = beer.name;
+    option.value = index;
+    select.appendChild(option);
  });
+
+ select.addEventListener('change', function(){
+   displayBeerInfo(beers);
+ });
+
 };
 
 document.addEventListener('DOMContentLoaded', app);
