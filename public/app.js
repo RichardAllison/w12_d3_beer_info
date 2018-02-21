@@ -19,21 +19,31 @@ const requestComplete = function () {
   populateList(beers);
 };
 
-const createListItem = function (beer) {
-  const li = document.createElement('li');
-  li.innerText = beer.name;
-  return li;
-};
+const createRow = function (beer) {
+  const table = document.getElementById("beer-list");
+  const row = document.createElement('tr')
+  table.appendChild(row);
+  const imgtd = document.createElement('td');
+  const img = createImage(beer);
+  img.width="50";
+  imgtd.appendChild(img);
+  const td = document.createElement('td');
+  td.innerText = beer.name;
+  row.appendChild(imgtd);
+  row.appendChild(td);
+  return row;
+}
 
-const appendListItem = function (li) {
-  const ul = document.getElementById("beer-list");
-  ul.appendChild(li);
+const createImage = function (beer) {
+  const img = document.createElement('img');
+  img.width = '50px';
+  img.src = beer.image_url;
+  return img;
 };
 
 const populateList = function (beers) {
   beers.forEach(function (beer) {
-   const li = createListItem(beer);
-   appendListItem(li);
+    createRow(beer);
  });
 };
 
