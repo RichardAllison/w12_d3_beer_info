@@ -23,23 +23,27 @@ const createRow = function (beer) {
   const table = document.getElementById("beer-list");
   const row = document.createElement('tr')
   table.appendChild(row);
-  const imgtd = document.createElement('td');
-  const img = createImage(beer);
-  img.width="50";
-  imgtd.appendChild(img);
-  const td = document.createElement('td');
-  td.innerText = beer.name;
+  const imgtd = createImage(beer);
+  const nametd = createBeerName(beer);
   row.appendChild(imgtd);
-  row.appendChild(td);
+  row.appendChild(nametd);
   return row;
 }
 
 const createImage = function (beer) {
+  const td = document.createElement('td');
   const img = document.createElement('img');
-  img.width = '50px';
   img.src = beer.image_url;
-  return img;
-};
+  // img.width = "50px";
+  td.appendChild(img);
+  return td;
+}
+
+const createBeerName = function (beer) {
+  const td = document.createElement('td');
+  td.innerText = beer.name;
+  return td;
+}
 
 const populateList = function (beers) {
   beers.forEach(function (beer) {
