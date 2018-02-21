@@ -22,6 +22,7 @@ const requestComplete = function () {
 
 const createImage = function (beer) {
   const imageDiv = document.getElementById('beer-image');
+  imageDiv.innerHTML = ''
   const img = document.createElement('img');
   img.src = beer.image_url;
   // img.width = "50px";
@@ -34,6 +35,7 @@ const displayBeerInfo = function (beers) {
 
   createImage(beer);
   const infoDiv = document.getElementById('beer-info');
+  infoDiv.innerHTML = ''
   const name = createBeerName(beer);
   infoDiv.appendChild(name);
 }
