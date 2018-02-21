@@ -1,5 +1,15 @@
+body {
+  position: relative;
+  width: auto;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
 img {
-  height: 100px;
+  height: 500px;
   width: auto;
 }
 
@@ -14,4 +24,17 @@ td {
 
 #container {
   display: flex;
+}
+
+#beer-info-section {
+  padding: 40px;
+}
+
+#beer-image {
+  padding-right: 40px;
+}
+
+#beer-list-section {
+  width: 100%;
+  text-align: center;
 }
